@@ -60,6 +60,7 @@ export class UserWarehouseCredentialsModel {
             switch (credentialsWithSecrets.type) {
                 case WarehouseTypes.REDSHIFT:
                 case WarehouseTypes.POSTGRES:
+                case WarehouseTypes.RISINGWAVE:
                 case WarehouseTypes.TRINO:
                 case WarehouseTypes.SNOWFLAKE:
                     credentials = {

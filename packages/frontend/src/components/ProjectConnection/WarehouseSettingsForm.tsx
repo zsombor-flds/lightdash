@@ -5,6 +5,7 @@ import { Controller, useWatch } from 'react-hook-form';
 import BigQueryForm from './WarehouseForms/BigQueryForm';
 import DatabricksForm from './WarehouseForms/DatabricksForm';
 import PostgresForm from './WarehouseForms/PostgresForm';
+import RisingWaveFrom from './WarehouseForms/RisingWaveForm';
 import RedshiftForm from './WarehouseForms/RedshiftForm';
 import SnowflakeForm from './WarehouseForms/SnowflakeForm';
 import TrinoForm from './WarehouseForms/TrinoForm';
@@ -12,6 +13,7 @@ import TrinoForm from './WarehouseForms/TrinoForm';
 const WarehouseTypeLabels = {
     [WarehouseTypes.BIGQUERY]: 'BigQuery',
     [WarehouseTypes.POSTGRES]: 'PostgreSQL',
+    [WarehouseTypes.RISINGWAVE]: 'RisingWave',
     [WarehouseTypes.REDSHIFT]: 'Redshift',
     [WarehouseTypes.SNOWFLAKE]: 'Snowflake',
     [WarehouseTypes.DATABRICKS]: 'Databricks',
@@ -21,6 +23,7 @@ const WarehouseTypeLabels = {
 const WarehouseTypeForms = {
     [WarehouseTypes.BIGQUERY]: BigQueryForm,
     [WarehouseTypes.POSTGRES]: PostgresForm,
+    [WarehouseTypes.RISINGWAVE]: RisingWaveFrom,
     [WarehouseTypes.REDSHIFT]: RedshiftForm,
     [WarehouseTypes.SNOWFLAKE]: SnowflakeForm,
     [WarehouseTypes.DATABRICKS]: DatabricksForm,

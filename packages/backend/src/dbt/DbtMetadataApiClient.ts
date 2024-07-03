@@ -14,6 +14,7 @@ const quoteChars: Record<SupportedDbtAdapter, string> = {
     snowflake: `"`,
     redshift: `"`,
     postgres: `"`,
+    risingwave: `"`,
     trino: `"`,
 };
 

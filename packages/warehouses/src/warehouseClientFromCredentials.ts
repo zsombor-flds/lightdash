@@ -10,6 +10,7 @@ import { PostgresWarehouseClient } from './warehouseClients/PostgresWarehouseCli
 import { RedshiftWarehouseClient } from './warehouseClients/RedshiftWarehouseClient';
 import { SnowflakeWarehouseClient } from './warehouseClients/SnowflakeWarehouseClient';
 import { TrinoWarehouseClient } from './warehouseClients/TrinoWarehouseClient';
+import { RisingWaveWarehouseClient } from './warehouseClients/RisingWaveWarehouseClient';
 
 export const warehouseClientFromCredentials = (
     credentials: CreateWarehouseCredentials,
@@ -27,6 +28,9 @@ export const warehouseClientFromCredentials = (
             return new DatabricksWarehouseClient(credentials);
         case WarehouseTypes.TRINO:
             return new TrinoWarehouseClient(credentials);
+        case WarehouseTypes.RISINGWAVE:
+            return new RisingWaveWarehouseClient(credentials);
+
         default:
             const never: never = credentials;
             throw new UnexpectedServerError(

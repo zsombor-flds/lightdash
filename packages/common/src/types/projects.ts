@@ -25,6 +25,7 @@ export enum WarehouseTypes {
     SNOWFLAKE = 'snowflake',
     DATABRICKS = 'databricks',
     TRINO = 'trino',
+    RISINGWAVE = 'risingwave',
 }
 
 export type SshTunnelConfiguration = {
@@ -100,6 +101,27 @@ export type PostgresCredentials = Omit<
     CreatePostgresCredentials,
     SensitiveCredentialsFieldNames
 >;
+export type CreateRisingWaveCredentials = SshTunnelConfiguration & {
+    type: WarehouseTypes.RISINGWAVE;
+    host: string;
+    user: string;
+    password: string;
+    requireUserCredentials?: boolean;
+    port: number;
+    dbname: string;
+    schema: string;
+    threads?: number;
+    keepalivesIdle?: number;
+    searchPath?: string;
+    role?: string;
+    sslmode?: string;
+    startOfWeek?: WeekDay | null;
+};
+export type RisingWaveCredentials = Omit<
+    CreateRisingWaveCredentials,
+    SensitiveCredentialsFieldNames
+>;
+
 export type CreateTrinoCredentials = {
     type: WarehouseTypes.TRINO;
     host: string;
@@ -162,6 +184,7 @@ export type CreateWarehouseCredentials =
     | CreateRedshiftCredentials
     | CreateBigqueryCredentials
     | CreatePostgresCredentials
+    | CreateRisingWaveCredentials
     | CreateSnowflakeCredentials
     | CreateDatabricksCredentials
     | CreateTrinoCredentials;
@@ -169,13 +192,15 @@ export type WarehouseCredentials =
     | SnowflakeCredentials
     | RedshiftCredentials
     | PostgresCredentials
+    | RisingWaveCredentials
     | BigqueryCredentials
     | DatabricksCredentials
     | TrinoCredentials;
 
 export type CreatePostgresLikeCredentials =
     | CreateRedshiftCredentials
-    | CreatePostgresCredentials;
+    | CreatePostgresCredentials
+    | CreateRisingWaveCredentials;
 
 export interface DbtProjectConfigBase {
     type: DbtProjectType;

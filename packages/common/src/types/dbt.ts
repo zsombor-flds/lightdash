@@ -29,6 +29,7 @@ export enum SupportedDbtAdapter {
     REDSHIFT = 'redshift',
     POSTGRES = 'postgres',
     TRINO = 'trino',
+    RISINGWAVE = 'risingwave',
 }
 
 export type DbtNodeConfig = {
@@ -143,6 +144,7 @@ export const normaliseModelDatabase = (
 ): DbtModelNode => {
     switch (targetWarehouse) {
         case SupportedDbtAdapter.POSTGRES:
+        case SupportedDbtAdapter.RISINGWAVE:
         case SupportedDbtAdapter.BIGQUERY:
         case SupportedDbtAdapter.SNOWFLAKE:
         case SupportedDbtAdapter.TRINO:

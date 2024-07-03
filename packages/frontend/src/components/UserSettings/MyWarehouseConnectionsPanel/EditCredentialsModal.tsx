@@ -24,6 +24,7 @@ const getCredentialsWithPlaceholders = (
         case WarehouseTypes.REDSHIFT:
         case WarehouseTypes.SNOWFLAKE:
         case WarehouseTypes.POSTGRES:
+        case WarehouseTypes.RISINGWAVE:
         case WarehouseTypes.TRINO:
             return {
                 ...credentials,

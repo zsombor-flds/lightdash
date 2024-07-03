@@ -12,6 +12,7 @@ export const getFieldQuoteChar = (
             case WarehouseTypes.SNOWFLAKE:
             case WarehouseTypes.REDSHIFT:
             case WarehouseTypes.POSTGRES:
+            case WarehouseTypes.RISINGWAVE:
             case WarehouseTypes.TRINO:
                 return '"';
             default:

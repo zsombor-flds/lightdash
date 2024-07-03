@@ -36,6 +36,11 @@ const defaultCredentials: Record<
         user: '',
         password: '',
     },
+    [WarehouseTypes.RISINGWAVE]: {
+        type: WarehouseTypes.RISINGWAVE,
+        user: '',
+        password: '',
+    },
     [WarehouseTypes.REDSHIFT]: {
         type: WarehouseTypes.REDSHIFT,
         user: '',

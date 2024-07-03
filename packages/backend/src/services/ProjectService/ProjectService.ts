@@ -247,7 +247,8 @@ export class ProjectService extends BaseService {
     >(args: T): Promise<T> {
         if (
             (args.warehouseConnection.type === WarehouseTypes.REDSHIFT ||
-                args.warehouseConnection.type === WarehouseTypes.POSTGRES) &&
+                args.warehouseConnection.type === WarehouseTypes.POSTGRES ||
+                args.warehouseConnection.type === WarehouseTypes.RISINGWAVE) &&
             args.warehouseConnection.useSshTunnel
         ) {
             const publicKey = args.warehouseConnection.sshTunnelPublicKey || '';
@@ -326,10 +327,10 @@ export class ProjectService extends BaseService {
         const credentialsWithWarehouse =
             credentials.type === WarehouseTypes.SNOWFLAKE
                 ? {
-                      ...warehouseSshCredentials,
-                      warehouse:
-                          snowflakeVirtualWarehouse || credentials.warehouse,
-                  }
+                    ...warehouseSshCredentials,
+                    warehouse:
+                        snowflakeVirtualWarehouse || credentials.warehouse,
+                }
                 : warehouseSshCredentials;
         const client = this.projectModel.getWarehouseClientFromCredentials(
             credentialsWithWarehouse,

@@ -238,6 +238,7 @@ export class SshTunnel<T extends CreateWarehouseCredentials> {
         const { type } = this.originalCredentials;
         switch (type) {
             case WarehouseTypes.POSTGRES:
+            case WarehouseTypes.RISINGWAVE:
             case WarehouseTypes.REDSHIFT:
                 if (this.originalCredentials.useSshTunnel) {
                     try {

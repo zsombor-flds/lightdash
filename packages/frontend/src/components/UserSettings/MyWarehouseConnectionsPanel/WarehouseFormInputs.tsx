@@ -14,6 +14,7 @@ export const WarehouseFormInputs: FC<{
         case WarehouseTypes.REDSHIFT:
         case WarehouseTypes.SNOWFLAKE:
         case WarehouseTypes.POSTGRES:
+        case WarehouseTypes.RISINGWAVE:
         case WarehouseTypes.TRINO:
             return (
                 <>

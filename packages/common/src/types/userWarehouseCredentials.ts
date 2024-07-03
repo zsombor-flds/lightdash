@@ -5,6 +5,7 @@ import {
     type CreateRedshiftCredentials,
     type CreateSnowflakeCredentials,
     type CreateTrinoCredentials,
+    type CreateRisingWaveCredentials,
 } from './projects';
 
 export type UserWarehouseCredentials = {
@@ -17,6 +18,7 @@ export type UserWarehouseCredentials = {
         | Pick<
               | CreateRedshiftCredentials
               | CreatePostgresCredentials
+            | CreateRisingWaveCredentials
               | CreateSnowflakeCredentials
               | CreateTrinoCredentials,
               'type' | 'user'
@@ -32,6 +34,7 @@ export type UserWarehouseCredentialsWithSecrets = Pick<
     credentials:
         | Pick<CreateRedshiftCredentials, 'type' | 'user' | 'password'>
         | Pick<CreatePostgresCredentials, 'type' | 'user' | 'password'>
+    | Pick<CreateRisingWaveCredentials, 'type' | 'user' | 'password'>
         | Pick<CreateSnowflakeCredentials, 'type' | 'user' | 'password'>
         | Pick<CreateTrinoCredentials, 'type' | 'user' | 'password'>
         | Pick<CreateBigqueryCredentials, 'type' | 'keyfileContents'>
