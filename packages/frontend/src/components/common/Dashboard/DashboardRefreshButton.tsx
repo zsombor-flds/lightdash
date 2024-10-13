@@ -9,7 +9,7 @@ import MantineIcon from '../MantineIcon';
 
 const REFRESH_INTERVAL_OPTIONS = [
     {
-        value: '0.083', // Equivalent to 10 seconds (10/60 minutes)
+        value: '0.083',
         label: '5s',
     },
     {
