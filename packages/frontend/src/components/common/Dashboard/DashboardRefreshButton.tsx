@@ -9,6 +9,10 @@ import MantineIcon from '../MantineIcon';
 
 const REFRESH_INTERVAL_OPTIONS = [
     {
+        value: '0.083', // Equivalent to 10 seconds (10/60 minutes)
+        label: '5s',
+    },
+    {
         value: '5',
         label: '5m',
     },
@@ -52,7 +56,7 @@ export const DashboardRefreshButton = () => {
 
     const interval = useInterval(
         () => invalidateAndSetRefreshTime(),
-        refreshInterval ? refreshInterval * 1000 * 60 : 0,
+        refreshInterval ? refreshInterval * 60000 : 0,
     );
 
     useEffect(() => {
@@ -128,24 +132,6 @@ export const DashboardRefreshButton = () => {
                 </Menu.Target>
                 <Menu.Dropdown>
                     <Menu.Label>Auto-refresh</Menu.Label>
-                    <Menu.Item
-                        fz="xs"
-                        onClick={() => {
-                            setRefreshInterval(undefined);
-                        }}
-                        disabled={refreshInterval === undefined}
-                        bg={refreshInterval === undefined ? 'blue' : 'white'}
-                        sx={{
-                            '&[disabled]': {
-                                color:
-                                    refreshInterval === undefined
-                                        ? 'white'
-                                        : 'black',
-                            },
-                        }}
-                    >
-                        Off
-                    </Menu.Item>
                     {REFRESH_INTERVAL_OPTIONS.map(({ value, label }) => (
                         <Menu.Item
                             fz="xs"
@@ -153,11 +139,7 @@ export const DashboardRefreshButton = () => {
                             onClick={() => {
                                 setRefreshInterval(+value);
                                 showToastSuccess({
-                                    title: `Your dashboard will refresh every ${
-                                        REFRESH_INTERVAL_OPTIONS.find(
-                                            (option) => value === option.value,
-                                        )?.label
-                                    }`,
+                                    title: `Your dashboard will refresh every ${label}`,
                                 });
                             }}
                             bg={refreshInterval === +value ? 'blue' : 'white'}
